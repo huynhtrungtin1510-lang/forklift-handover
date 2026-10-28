@@ -66,7 +66,7 @@
 
     <section class="card">
       <div class="actions">
-        <button class="btn primary" id="shareBtn" type="submit">GỬI / CHIA SẺ QUA ZALO</button>
+        <button class="btn primary" id="shareBtn" type="submit">CHIA SẺ ẢNH QUA ZALO</button>
         <button class="btn secondary" id="prepareBtn" type="button">Tạo lại ảnh đóng dấu</button>
         <button class="btn danger" id="clearBtn" type="button">Xóa ảnh và làm mới</button>
       </div>
@@ -180,15 +180,15 @@
     e.preventDefault(); if(!validateForm())return;
     if(!shareFile && !(await prepareImage()))return;
     const text=messageText(shareFile.stampTime||localTime(new Date()));
-    const data={title:'Bàn giao xe nâng',text,files:[shareFile]};
+    const data={files:[shareFile]};
     try{
       if(navigator.canShare && navigator.canShare({files:[shareFile]}) && navigator.share){
         await navigator.share(data);
         clearAll(true);
-        showStatus('Đã hoàn tất chia sẻ. Ảnh tạm trong trang đã được xóa khỏi bộ nhớ.', 'ok');
+        showStatus('Đã chia sẻ ảnh. Trên Zalo, hãy gửi ảnh trước; sau đó app sẽ hỗ trợ sao chép nội dung bàn giao để dán vào tin nhắn nếu cần.', 'ok');
       }else if(navigator.share){
-        await navigator.share({title:data.title,text:data.text});
-        showStatus('Trình duyệt này chỉ chia sẻ được nội dung tin nhắn, không đính kèm ảnh. Hãy dùng Safari trên iPhone hoặc Chrome trên Android phiên bản mới.', 'warn');
+        await navigator.share({text});
+        showStatus('Thiết bị này không hỗ trợ chia sẻ tệp ảnh từ trình duyệt. Đã mở chia sẻ nội dung văn bản thay thế.', 'warn');
       }else{
         await navigator.clipboard.writeText(text).catch(()=>{});
         showStatus('Trình duyệt không hỗ trợ chia sẻ tệp. Nội dung tin nhắn đã được sao chép nếu trình duyệt cho phép.', 'err');

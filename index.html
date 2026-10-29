@@ -1,205 +1,50 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0f6cbd">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Bàn giao xe nâng</title>
-  <style>
-    :root{color-scheme:light dark;--bg:#f3f6f9;--card:#fff;--text:#17212b;--muted:#64748b;--line:#d8e0e8;--primary:#0f6cbd;--primary2:#0b5798;--danger:#b42318;--ok:#067647;--warn:#b54708}
-    *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    .app{max-width:720px;margin:auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}.head{display:flex;gap:12px;align-items:center;margin:5px 0 14px}.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0f6cbd,#42a5f5);display:grid;place-items:center;font-size:27px;box-shadow:0 8px 20px #0f6cbd35}.head h1{font-size:22px;margin:0}.head p{margin:3px 0 0;color:var(--muted);font-size:13px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:0 7px 22px rgba(15,23,42,.05)}.card h2{font-size:16px;margin:0 0 13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}input,select,textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);padding:10px 12px;font:inherit;font-size:16px}textarea{min-height:84px;resize:vertical}input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid #5eb6ff66;outline-offset:1px;border-color:var(--primary)}
-    .checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check{display:flex;align-items:center;gap:9px;border:1px solid var(--line);padding:11px;border-radius:12px;font-weight:600;font-size:14px}.check input{width:22px;height:22px;min-height:auto;margin:0;accent-color:var(--primary)}
-    .camera{position:relative;border:2px dashed #8dbbe0;border-radius:16px;min-height:170px;display:grid;place-items:center;overflow:hidden;background:#eef7ff;color:#17466c;text-align:center;padding:18px}.camera input{position:absolute;inset:0;opacity:0;cursor:pointer}.camera img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}.camera .hint{pointer-events:none}.camera .hint b{display:block;font-size:42px;margin-bottom:8px}.camera.has-image img{display:block}.camera.has-image .hint{display:none}.stamp-note{font-size:12px;color:var(--muted);margin:9px 0 0;line-height:1.45}
-    .preview{display:none}.preview.show{display:block}.preview img{width:100%;border-radius:14px;border:1px solid var(--line);display:block}.meta{font-size:12px;color:var(--muted);margin-top:8px}.actions{display:grid;gap:10px}.btn{border:0;border-radius:14px;min-height:52px;padding:12px 16px;font-weight:800;font-size:16px;cursor:pointer}.primary{background:var(--primary);color:#fff}.primary:active{background:var(--primary2)}.secondary{background:#e8f2fb;color:#0b5798}.danger{background:#fff0ee;color:var(--danger);border:1px solid #fecaca}.btn:disabled{opacity:.5;cursor:not-allowed}.status{display:none;padding:11px 12px;border-radius:12px;margin-top:10px;font-size:14px;line-height:1.45}.status.show{display:block}.status.ok{background:#ecfdf3;color:var(--ok)}.status.warn{background:#fff7ed;color:var(--warn)}.status.err{background:#fef3f2;color:var(--danger)}
-    .privacy{font-size:12px;line-height:1.5;color:var(--muted);text-align:center;padding:2px 8px}.required{color:var(--danger)}
-    @media(max-width:520px){.grid,.checks{grid-template-columns:1fr}.full{grid-column:auto}.app{padding-left:10px;padding-right:10px}.card{padding:14px}}
-    @media(prefers-color-scheme:dark){:root{--bg:#0c1117;--card:#151c24;--text:#edf4fb;--muted:#9eb0c3;--line:#334252}.camera{background:#101e2a;color:#b9dcf6}.secondary{background:#19324a;color:#b9dcf6}.danger{background:#351b1b}.status.ok{background:#123327}.status.warn{background:#382710}.status.err{background:#3b1c20}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f6cbd">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Bàn giao xe nâng</title>
+<style>
+:root{color-scheme:light dark;--bg:#f3f6f9;--card:#fff;--text:#17212b;--muted:#64748b;--line:#d8e0e8;--primary:#0f6cbd;--danger:#b42318;--ok:#067647;--warn:#b54708}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}.app{max-width:720px;margin:auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}.head{display:flex;gap:12px;align-items:center;margin:5px 0 14px}.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0f6cbd,#42a5f5);display:grid;place-items:center;font-size:27px}.head h1{font-size:22px;margin:0}.head p{margin:3px 0 0;color:var(--muted);font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}.card h2{font-size:16px;margin:0 0 13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}input,select,textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);padding:10px 12px;font:inherit;font-size:16px}textarea{min-height:84px;resize:vertical}.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check{display:flex;align-items:center;gap:9px;border:1px solid var(--line);padding:11px;border-radius:12px;font-weight:600;font-size:14px}.check input{width:22px;height:22px;min-height:auto;margin:0;accent-color:var(--primary)}.camera{position:relative;border:2px dashed #8dbbe0;border-radius:16px;min-height:180px;display:grid;place-items:center;overflow:hidden;background:#eef7ff;color:#17466c;text-align:center;padding:18px}.camera input{position:absolute;inset:0;opacity:0}.camera img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}.camera.has-image img{display:block}.camera.has-image .hint{display:none}.hint{pointer-events:none}.hint b{display:block;font-size:42px}.preview{display:none}.preview.show{display:block}.preview img{width:100%;border-radius:14px;border:1px solid var(--line);display:block}.meta,.note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}.actions{display:grid;gap:10px}.btn{border:0;border-radius:14px;min-height:52px;padding:12px 16px;font-weight:800;font-size:16px;cursor:pointer}.primary{background:var(--primary);color:white}.secondary{background:#e8f2fb;color:#0b5798}.danger{background:#fff0ee;color:var(--danger);border:1px solid #fecaca}.status{display:none;padding:11px 12px;border-radius:12px;margin-top:10px;font-size:14px}.status.show{display:block}.status.ok{background:#ecfdf3;color:var(--ok)}.status.warn{background:#fff7ed;color:var(--warn)}.status.err{background:#fef3f2;color:var(--danger)}.required{color:var(--danger)}@media(max-width:520px){.grid,.checks{grid-template-columns:1fr}.full{grid-column:auto}.app{padding-left:10px;padding-right:10px}}@media(prefers-color-scheme:dark){:root{--bg:#0c1117;--card:#151c24;--text:#edf4fb;--muted:#9eb0c3;--line:#334252}.camera{background:#101e2a;color:#b9dcf6}.secondary{background:#19324a;color:#b9dcf6}.danger{background:#351b1b}.status.ok{background:#123327}.status.warn{background:#382710}.status.err{background:#3b1c20}}
+</style>
 </head>
 <body>
 <main class="app">
-  <header class="head"><div class="logo">🚜</div><div><h1>Bàn giao xe nâng</h1><p>Chụp ảnh có ngày giờ và chia sẻ qua Zalo</p></div></header>
-
-  <form id="handoverForm" novalidate>
-    <section class="card">
-      <h2>1. Thông tin bàn giao</h2>
-      <div class="grid">
-        <div><label for="vehicle">Mã xe <span class="required">*</span></label><input id="vehicle" maxlength="30" placeholder="Ví dụ: FL-03" required autocomplete="off"></div>
-        <div><label for="shift">Ca làm việc <span class="required">*</span></label><select id="shift" required><option value="">Chọn ca</option><option>Ca 1</option><option>Ca 2</option><option>Ca 3</option><option>Hành chính</option></select></div>
-        <div><label for="giver">Người bàn giao <span class="required">*</span></label><input id="giver" maxlength="60" required autocomplete="name"></div>
-        <div><label for="receiver">Người nhận <span class="required">*</span></label><input id="receiver" maxlength="60" required autocomplete="off"></div>
-        <div><label for="hours">Giờ hoạt động / ODO</label><input id="hours" maxlength="20" inputmode="decimal" placeholder="Ví dụ: 3215 h"></div>
-        <div><label for="condition">Tình trạng <span class="required">*</span></label><select id="condition" required><option>Bình thường</option><option>Có bất thường</option><option>Không thể vận hành</option></select></div>
-        <div class="full"><label for="note">Ghi chú</label><textarea id="note" maxlength="500" placeholder="Mô tả hư hỏng, thiếu thiết bị hoặc nội dung cần lưu ý..."></textarea></div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>2. Kiểm tra thiết bị</h2>
-      <div class="checks">
-        <label class="check"><input id="key" type="checkbox"> Đã bàn giao chìa khóa</label>
-        <label class="check"><input id="charger" type="checkbox"> Bộ sạc / bình điện</label>
-        <label class="check"><input id="accessory" type="checkbox"> Thiết bị đi kèm</label>
-        <label class="check"><input id="safety" type="checkbox"> Kiểm tra an toàn</label>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>3. Chụp hình bằng chứng <span class="required">*</span></h2>
-      <label class="camera" id="cameraBox" for="photoInput">
-        <input id="photoInput" type="file" accept="image/*" capture="environment" required>
-        <img id="rawPreview" alt="Ảnh vừa chụp">
-        <span class="hint"><b>📷</b>Chạm để mở camera<br><small>Ảnh sẽ được đóng dấu ngày giờ tự động</small></span>
-      </label>
-      <p class="stamp-note">Nên chụp rõ xe, chìa khóa và các thiết bị đi kèm. Thời gian được lấy từ điện thoại tại lúc xử lý ảnh.</p>
-    </section>
-
-    <section class="card preview" id="resultCard">
-      <h2>Ảnh đã đóng dấu</h2>
-      <img id="stampedPreview" alt="Ảnh bàn giao đã có ngày giờ">
-      <div class="meta" id="imageMeta"></div>
-    </section>
-
-    <section class="card">
-      <div class="actions">
-        <button class="btn primary" id="shareBtn" type="submit">CHIA SẺ ẢNH QUA ZALO</button>
-        <button class="btn secondary" id="prepareBtn" type="button">Tạo lại ảnh đóng dấu</button>
-        <button class="btn danger" id="clearBtn" type="button">Xóa ảnh và làm mới</button>
-      </div>
-      <div class="status" id="status" aria-live="polite"></div>
-    </section>
-  </form>
-  <p class="privacy">Ứng dụng không dùng LocalStorage, không tải ảnh lên máy chủ và không tự lưu ảnh vào thư viện. Sau khi chia sẻ thành công, dữ liệu ảnh trong trang sẽ được giải phóng.</p>
-</main>
-
-<canvas id="canvas" hidden></canvas>
+<header class="head"><div class="logo">🚜</div><div><h1>Bàn giao xe nâng</h1><p>Toàn bộ thông tin được đóng trực tiếp lên ảnh</p></div></header>
+<form id="form" novalidate>
+<section class="card"><h2>1. Thông tin bàn giao</h2><div class="grid">
+<div><label>Mã xe <span class="required">*</span></label><input id="vehicle" required maxlength="30" placeholder="FL-03"></div>
+<div><label>Ca làm việc <span class="required">*</span></label><select id="shift" required><option value="">Chọn ca</option><option>Ca 1</option><option>Ca 2</option><option>Ca 3</option><option>Hành chính</option></select></div>
+<div><label>Người bàn giao <span class="required">*</span></label><input id="giver" required maxlength="60"></div>
+<div><label>Người nhận <span class="required">*</span></label><input id="receiver" required maxlength="60"></div>
+<div><label>Giờ hoạt động / ODO</label><input id="hours" maxlength="30" placeholder="3215 h"></div>
+<div><label>Tình trạng <span class="required">*</span></label><select id="condition" required><option>Bình thường</option><option>Có bất thường</option><option>Không thể vận hành</option></select></div>
+<div class="full"><label>Ghi chú</label><textarea id="remark" maxlength="500" placeholder="Mô tả hư hỏng hoặc thiếu thiết bị..."></textarea></div>
+</div></section>
+<section class="card"><h2>2. Kiểm tra thiết bị</h2><div class="checks">
+<label class="check"><input id="key" type="checkbox"> Chìa khóa</label><label class="check"><input id="charger" type="checkbox"> Sạc / bình điện</label><label class="check"><input id="accessory" type="checkbox"> Thiết bị đi kèm</label><label class="check"><input id="safety" type="checkbox"> Kiểm tra an toàn</label>
+</div></section>
+<section class="card"><h2>3. Chụp ảnh <span class="required">*</span></h2><label class="camera" id="cameraBox"><input id="photo" type="file" accept="image/*" capture="environment" required><img id="raw" alt="Ảnh vừa chụp"><span class="hint"><b>📷</b>Chạm để mở camera<br><small>Thông tin sẽ được đóng trực tiếp lên ảnh</small></span></label><p class="note">Nên chụp ngang hoặc đứng xa vừa đủ để phần thông tin không che mất khu vực cần làm bằng chứng.</p></section>
+<section class="card preview" id="previewCard"><h2>Ảnh hoàn chỉnh</h2><img id="result" alt="Ảnh bàn giao hoàn chỉnh"><div class="meta" id="meta"></div></section>
+<section class="card"><div class="actions"><button class="btn primary" type="submit">CHIA SẺ CHỈ ẢNH</button><button class="btn secondary" id="make" type="button">TẠO / CẬP NHẬT ẢNH</button><button class="btn danger" id="clear" type="button">XÓA VÀ LÀM MỚI</button></div><div class="status" id="status" aria-live="polite"></div></section>
+</form><p class="note" style="text-align:center">Không upload ảnh lên GitHub, không dùng LocalStorage. Ảnh chỉ được tạo tạm trong bộ nhớ trình duyệt để chia sẻ.</p>
+</main><canvas id="canvas" hidden></canvas>
 <script>
-(() => {
-  'use strict';
-  const $ = id => document.getElementById(id);
-  const form = $('handoverForm'), input = $('photoInput'), raw = $('rawPreview');
-  const stamped = $('stampedPreview'), canvas = $('canvas'), status = $('status');
-  let rawUrl = '', stampedUrl = '', shareFile = null;
-
-  function showStatus(message, type='warn') {
-    status.textContent = message;
-    status.className = 'status show ' + type;
-  }
-  function clearStatus(){ status.textContent=''; status.className='status'; }
-  function revoke(url){ if(url) URL.revokeObjectURL(url); }
-  function cleanText(value, fallback='-'){ const v=String(value||'').trim(); return v || fallback; }
-  function localTime(date){
-    return new Intl.DateTimeFormat('vi-VN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(date);
-  }
-  function fileSafeTime(date){
-    const p=n=>String(n).padStart(2,'0');
-    return `${date.getFullYear()}${p(date.getMonth()+1)}${p(date.getDate())}_${p(date.getHours())}${p(date.getMinutes())}${p(date.getSeconds())}`;
-  }
-  function messageText(stampTime){
-    const marks = [
-      `Chìa khóa: ${$('key').checked?'ĐÃ BÀN GIAO':'CHƯA XÁC NHẬN'}`,
-      `Sạc/bình điện: ${$('charger').checked?'ĐÃ KIỂM TRA':'CHƯA XÁC NHẬN'}`,
-      `Thiết bị đi kèm: ${$('accessory').checked?'ĐÃ KIỂM TRA':'CHƯA XÁC NHẬN'}`,
-      `An toàn: ${$('safety').checked?'ĐÃ KIỂM TRA':'CHƯA XÁC NHẬN'}`
-    ];
-    return [
-      '🚜 BÀN GIAO XE NÂNG',
-      `Thời gian: ${stampTime}`,
-      `Mã xe: ${cleanText($('vehicle').value)}`,
-      `Ca: ${cleanText($('shift').value)}`,
-      `Người giao: ${cleanText($('giver').value)}`,
-      `Người nhận: ${cleanText($('receiver').value)}`,
-      `Giờ hoạt động/ODO: ${cleanText($('hours').value)}`,
-      `Tình trạng: ${cleanText($('condition').value)}`,
-      ...marks,
-      `Ghi chú: ${cleanText($('note').value,'Không')}`
-    ].join('\n');
-  }
-  function validateForm(){
-    if(!form.reportValidity()){ showStatus('Vui lòng nhập đủ trường bắt buộc và chụp ảnh.', 'err'); return false; }
-    return true;
-  }
-  function loadImage(file){
-    return new Promise((resolve,reject)=>{
-      const img=new Image(); const temp=URL.createObjectURL(file);
-      img.onload=()=>{URL.revokeObjectURL(temp);resolve(img)};
-      img.onerror=()=>{URL.revokeObjectURL(temp);reject(new Error('Không đọc được ảnh.'))};
-      img.src=temp;
-    });
-  }
-  function wrapLines(ctx,text,maxWidth){
-    const words=String(text).split(/\s+/); const lines=[]; let line='';
-    for(const word of words){ const test=line?line+' '+word:word; if(ctx.measureText(test).width>maxWidth && line){lines.push(line);line=word}else line=test; }
-    if(line) lines.push(line); return lines;
-  }
-  async function prepareImage(){
-    clearStatus();
-    const file=input.files && input.files[0];
-    if(!file){showStatus('Hãy chụp hoặc chọn một ảnh trước.', 'err');return false;}
-    try{
-      const img=await loadImage(file); const when=new Date();
-      const maxSide=1800; let w=img.naturalWidth,h=img.naturalHeight;
-      const scale=Math.min(1,maxSide/Math.max(w,h)); w=Math.round(w*scale);h=Math.round(h*scale);
-      canvas.width=w; canvas.height=h; const ctx=canvas.getContext('2d',{alpha:false});
-      ctx.drawImage(img,0,0,w,h);
-      const fontSize=Math.max(24,Math.round(w*0.025)); const pad=Math.max(18,Math.round(w*0.018)); const lineH=Math.round(fontSize*1.32);
-      ctx.font=`700 ${fontSize}px -apple-system, BlinkMacSystemFont, Segoe UI, Arial`;
-      const lines=[`BÀN GIAO XE NÂNG • ${localTime(when)}`,`Xe: ${cleanText($('vehicle').value)} • ${cleanText($('shift').value)} • ${cleanText($('condition').value)}`,`Giao: ${cleanText($('giver').value)} → Nhận: ${cleanText($('receiver').value)}`];
-      if($('note').value.trim()) lines.push(...wrapLines(ctx,'Ghi chú: '+$('note').value.trim(),w-pad*2));
-      const boxH=pad*2 + lineH*lines.length;
-      const grad=ctx.createLinearGradient(0,h-boxH,0,h); grad.addColorStop(0,'rgba(0,0,0,.35)');grad.addColorStop(.22,'rgba(0,0,0,.78)');grad.addColorStop(1,'rgba(0,0,0,.9)');
-      ctx.fillStyle=grad;ctx.fillRect(0,h-boxH,w,boxH);ctx.fillStyle='#fff';ctx.textBaseline='top';
-      lines.forEach((line,i)=>ctx.fillText(line,pad,h-boxH+pad+i*lineH,w-pad*2));
-      const blob=await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(new Error('Không tạo được ảnh.')),'image/jpeg',0.9));
-      revoke(stampedUrl); stampedUrl=URL.createObjectURL(blob);
-      stamped.src=stampedUrl; $('resultCard').classList.add('show');
-      shareFile=new File([blob],`ban_giao_${cleanText($('vehicle').value,'xe').replace(/[^a-zA-Z0-9_-]+/g,'_')}_${fileSafeTime(when)}.jpg`,{type:'image/jpeg',lastModified:when.getTime()});
-      shareFile.stampTime=localTime(when); $('imageMeta').textContent=`${shareFile.name} • ${Math.round(blob.size/1024)} KB`;
-      showStatus('Đã tạo ảnh có ngày giờ. Bạn có thể bấm Gửi / Chia sẻ qua Zalo.', 'ok'); return true;
-    }catch(err){showStatus(err.message||'Không thể xử lý ảnh.', 'err');return false;}
-  }
-  function clearAll(afterShare=false){
-    revoke(rawUrl);revoke(stampedUrl);rawUrl='';stampedUrl='';shareFile=null;input.value='';raw.removeAttribute('src');stamped.removeAttribute('src');
-    $('cameraBox').classList.remove('has-image');$('resultCard').classList.remove('show');canvas.width=1;canvas.height=1;
-    if(!afterShare) form.reset();
-  }
-  input.addEventListener('change',()=>{
-    revoke(rawUrl); const file=input.files&&input.files[0];
-    if(!file){$('cameraBox').classList.remove('has-image');return;}
-    if(!file.type.startsWith('image/')){input.value='';showStatus('Tệp đã chọn không phải hình ảnh.','err');return;}
-    rawUrl=URL.createObjectURL(file);raw.src=rawUrl;$('cameraBox').classList.add('has-image');
-    shareFile=null;revoke(stampedUrl);stampedUrl='';$('resultCard').classList.remove('show');clearStatus();
-  });
-  $('prepareBtn').addEventListener('click',()=>{if(validateForm())prepareImage()});
-  $('clearBtn').addEventListener('click',()=>{clearAll(false);showStatus('Đã xóa ảnh và làm mới biểu mẫu.','ok')});
-  form.addEventListener('submit',async e=>{
-    e.preventDefault(); if(!validateForm())return;
-    if(!shareFile && !(await prepareImage()))return;
-    const text=messageText(shareFile.stampTime||localTime(new Date()));
-    const data={files:[shareFile]};
-    try{
-      if(navigator.canShare && navigator.canShare({files:[shareFile]}) && navigator.share){
-        await navigator.share(data);
-        clearAll(true);
-        showStatus('Đã chia sẻ ảnh. Trên Zalo, hãy gửi ảnh trước; sau đó app sẽ hỗ trợ sao chép nội dung bàn giao để dán vào tin nhắn nếu cần.', 'ok');
-      }else if(navigator.share){
-        await navigator.share({text});
-        showStatus('Thiết bị này không hỗ trợ chia sẻ tệp ảnh từ trình duyệt. Đã mở chia sẻ nội dung văn bản thay thế.', 'warn');
-      }else{
-        await navigator.clipboard.writeText(text).catch(()=>{});
-        showStatus('Trình duyệt không hỗ trợ chia sẻ tệp. Nội dung tin nhắn đã được sao chép nếu trình duyệt cho phép.', 'err');
-      }
-    }catch(err){
-      if(err && err.name==='AbortError') showStatus('Bạn đã đóng bảng chia sẻ. Ảnh vẫn còn trong trang để gửi lại.', 'warn');
-      else showStatus('Không thể mở bảng chia sẻ: '+(err.message||'lỗi không xác định'), 'err');
-    }
-  });
-  window.addEventListener('pagehide',()=>{revoke(rawUrl);revoke(stampedUrl)});
-})();
-</script>
-</body>
-</html>
+(()=>{'use strict';const $=id=>document.getElementById(id),form=$('form'),photo=$('photo'),raw=$('raw'),result=$('result'),canvas=$('canvas'),status=$('status');let rawUrl='',resultUrl='',shareFile=null;
+const val=(id,fallback='-')=>{const v=String($(id).value||'').trim();return v||fallback};
+const yes=id=>$(id).checked?'CÓ':'CHƯA XÁC NHẬN';
+function msg(t,type='warn'){status.textContent=t;status.className='status show '+type}function revoke(u){if(u)URL.revokeObjectURL(u)}
+function time(d){return new Intl.DateTimeFormat('vi-VN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(d)}
+function safe(d){const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`}
+function wrap(ctx,text,max){const words=String(text).split(/\s+/),out=[];let line='';for(const w of words){const test=line?line+' '+w:w;if(ctx.measureText(test).width>max&&line){out.push(line);line=w}else line=test}if(line)out.push(line);return out}
+function load(file){return new Promise((ok,no)=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{revoke(u);ok(im)};im.onerror=()=>{revoke(u);no(new Error('Không đọc được ảnh'))};im.src=u})}
+function valid(){if(!form.reportValidity()){msg('Vui lòng nhập đủ trường bắt buộc và chụp ảnh.','err');return false}return true}
+async function createImage(){const file=photo.files&&photo.files[0];if(!file){msg('Hãy chụp ảnh trước.','err');return false}try{const im=await load(file),now=new Date(),maxSide=2000;let w=im.naturalWidth,h=im.naturalHeight,s=Math.min(1,maxSide/Math.max(w,h));w=Math.round(w*s);h=Math.round(h*s);canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d',{alpha:false});ctx.drawImage(im,0,0,w,h);
+const fs=Math.max(24,Math.round(w*.024)),small=Math.max(20,Math.round(fs*.82)),pad=Math.max(20,Math.round(w*.018)),lh=Math.round(fs*1.35);ctx.font=`700 ${fs}px Arial`;const lines=[];lines.push({t:'BÀN GIAO XE NÂNG',big:true});lines.push({t:`Thời gian: ${time(now)}`});lines.push({t:`Mã xe: ${val('vehicle')}   |   Ca: ${val('shift')}   |   ODO: ${val('hours')}`});lines.push({t:`Người giao: ${val('giver')}`});lines.push({t:`Người nhận: ${val('receiver')}`});lines.push({t:`Tình trạng: ${val('condition')}`});lines.push({t:`Chìa khóa: ${yes('key')}   |   Sạc/bình: ${yes('charger')}`});lines.push({t:`Thiết bị: ${yes('accessory')}   |   An toàn: ${yes('safety')}`});ctx.font=`700 ${small}px Arial`;wrap(ctx,'Ghi chú: '+val('remark','Không'),w-pad*2).forEach(t=>lines.push({t,small:true}));const boxH=pad*2+lines.reduce((a,x)=>a+(x.big?Math.round(lh*1.15):x.small?Math.round(lh*.92):lh),0);const y=Math.max(0,h-boxH);ctx.fillStyle='rgba(0,0,0,.84)';ctx.fillRect(0,y,w,h-y);let cy=y+pad;for(const x of lines){ctx.font=x.big?`800 ${Math.round(fs*1.18)}px Arial`:x.small?`700 ${small}px Arial`:`700 ${fs}px Arial`;ctx.fillStyle=x.big?'#63c5ff':'#fff';ctx.textBaseline='top';ctx.fillText(x.t,pad,cy,w-pad*2);cy+=x.big?Math.round(lh*1.15):x.small?Math.round(lh*.92):lh}
+const blob=await new Promise((ok,no)=>canvas.toBlob(b=>b?ok(b):no(new Error('Không tạo được ảnh')),'image/jpeg',.9));revoke(resultUrl);resultUrl=URL.createObjectURL(blob);result.src=resultUrl;$('previewCard').classList.add('show');shareFile=new File([blob],`ban_giao_${val('vehicle','xe').replace(/[^a-zA-Z0-9_-]+/g,'_')}_${safe(now)}.jpg`,{type:'image/jpeg',lastModified:now.getTime()});$('meta').textContent=`${shareFile.name} • ${Math.round(blob.size/1024)} KB`;msg('Ảnh đã chứa toàn bộ thông tin. Bấm “CHIA SẺ CHỈ ẢNH”.','ok');return true}catch(e){msg(e.message||'Không xử lý được ảnh.','err');return false}}
+photo.addEventListener('change',()=>{revoke(rawUrl);const f=photo.files&&photo.files[0];if(!f)return;if(!f.type.startsWith('image/')){photo.value='';msg('Tệp không phải hình ảnh.','err');return}rawUrl=URL.createObjectURL(f);raw.src=rawUrl;$('cameraBox').classList.add('has-image');shareFile=null;revoke(resultUrl);resultUrl='';$('previewCard').classList.remove('show')});
+$('make').addEventListener('click',()=>{if(valid())createImage()});$('clear').addEventListener('click',()=>{revoke(rawUrl);revoke(resultUrl);rawUrl=resultUrl='';shareFile=null;form.reset();raw.removeAttribute('src');result.removeAttribute('src');photo.value='';$('cameraBox').classList.remove('has-image');$('previewCard').classList.remove('show');canvas.width=canvas.height=1;msg('Đã xóa dữ liệu tạm.','ok')});
+form.addEventListener('submit',async e=>{e.preventDefault();if(!valid())return;if(!shareFile&&!(await createImage()))return;try{if(navigator.share&&navigator.canShare&&navigator.canShare({files:[shareFile]})){await navigator.share({files:[shareFile]});msg('Đã mở chia sẻ ảnh. Nếu Zalo không hiện, chọn “Thêm/More” trong bảng chia sẻ để bật Zalo.','ok')}else{msg('Trình duyệt này không hỗ trợ chia sẻ tệp ảnh. Hãy dùng Safari mới trên iPhone hoặc Chrome mới trên Android.','err')}}catch(e){if(e.name==='AbortError')msg('Bạn đã đóng bảng chia sẻ. Ảnh vẫn còn để gửi lại.','warn');else msg('Không mở được chia sẻ ảnh: '+(e.message||'lỗi không xác định'),'err')}});window.addEventListener('pagehide',()=>{revoke(rawUrl);revoke(resultUrl)})})();
+</script></body></html>
